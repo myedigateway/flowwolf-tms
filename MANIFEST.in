@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include flowwolf_tms *.css
+recursive-include flowwolf_tms *.csv
+recursive-include flowwolf_tms *.html
+recursive-include flowwolf_tms *.ico
+recursive-include flowwolf_tms *.js
+recursive-include flowwolf_tms *.json
+recursive-include flowwolf_tms *.md
+recursive-include flowwolf_tms *.png
+recursive-include flowwolf_tms *.py
+recursive-include flowwolf_tms *.svg
+recursive-include flowwolf_tms *.txt
+recursive-exclude flowwolf_tms *.pyc
