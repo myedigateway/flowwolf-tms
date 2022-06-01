@@ -1,28 +1,50 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2022-05-23 04:44:57.849907",
+ "creation": "2022-06-01 04:53:50.547356",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "location",
-  "section_break_2",
+  "location_address",
+  "address_and_contact_section",
+  "address_line_1",
+  "city",
+  "mobile_no",
   "address",
-  "address_html",
-  "column_break_5",
-  "contact",
-  "contact_html"
+  "column_break_3",
+  "state",
+  "postal_code",
+  "country",
+  "address_html"
  ],
  "fields": [
   {
-   "fieldname": "location",
+   "fieldname": "location_address",
    "fieldtype": "Small Text",
-   "label": "Location"
+   "in_list_view": 1,
+   "label": "Location Address",
+   "reqd": 1
   },
   {
-   "fieldname": "section_break_2",
-   "fieldtype": "Section Break"
+   "fieldname": "address_and_contact_section",
+   "fieldtype": "Section Break",
+   "label": "Address and Contact"
+  },
+  {
+   "fieldname": "address_line_1",
+   "fieldtype": "Data",
+   "label": "Address Line 1"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "label": "Mobile No"
   },
   {
    "fieldname": "address",
@@ -31,29 +53,34 @@
    "options": "Address"
   },
   {
-   "fieldname": "address_html",
-   "fieldtype": "HTML",
-   "label": "Address HTML"
-  },
-  {
-   "fieldname": "column_break_5",
+   "fieldname": "column_break_3",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "contact",
-   "fieldtype": "Link",
-   "label": "Contact",
-   "options": "Contact"
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
   },
   {
-   "fieldname": "contact_html",
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "address_html",
    "fieldtype": "HTML",
-   "label": "Contact HTML"
+   "label": "Address HTML"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-05-23 04:53:51.020683",
+ "modified": "2022-06-01 04:53:50.547356",
  "modified_by": "Administrator",
  "module": "TMS",
  "name": "Stop Location",
@@ -74,6 +101,5 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
- "title_field": "location"
+ "states": []
 }
