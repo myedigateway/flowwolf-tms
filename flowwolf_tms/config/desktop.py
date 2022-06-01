@@ -5,7 +5,7 @@ def get_data():
 		{
 			"module_name": "Flowwolf TMS",
 			"color": "grey",
-			"icon": "octicon octicon-file-directory",
+			"icon": "far fa-truck-container",
 			"type": "module",
 			"label": _("Flowwolf TMS")
 		}
