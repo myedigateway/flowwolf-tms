@@ -33,7 +33,7 @@ stops_hc_values = {
 
 class Load(Document):
 	@frappe.whitelist()
-	def get_xml(self):
+	def get_xml(self, beautify=True):
 		# stops_list = get_stop_list()
 		xml_dict = {
 			"stopCount": len(self.stops),
@@ -73,7 +73,11 @@ class Load(Document):
 
 						xml_dict[field.fieldname].append(temp_dict)
 		xml_dict = {**hc_values, **xml_dict}
-		xml = parseString(dicttoxml(xml_dict, attr_type=False, item_func=my_item_func).decode('UTF-8'))
+		xml = dicttoxml(xml_dict, attr_type=False, item_func=my_item_func)
+		
+		if beautify:
+			xml = parseString(dicttoxml(xml_dict, attr_type=False, item_func=my_item_func).decode('UTF-8'))
+			return str(xml.toprettyxml())
 
-		return str(xml.toprettyxml())
+		return str(xml)
 
