@@ -10,7 +10,7 @@ frappe.ui.form.on('Load', {
 	show_xml_dialog(frm) {
 		frm.add_custom_button(__('Standard XML'), function() {
 			frappe.call({
-				method: 'get_xml',
+				method: 'get_xml_',
 				doc: frm.doc,
 				callback: function(r) {
 					if (r.message) {
