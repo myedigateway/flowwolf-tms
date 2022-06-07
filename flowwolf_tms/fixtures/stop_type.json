@@ -1,0 +1,23 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Stop Type",
+  "modified": "2022-05-23 05:05:06.691558",
+  "name": "Pickup",
+  "stop_type": "Pickup"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Stop Type",
+  "modified": "2022-05-23 05:05:16.725924",
+  "name": "Drop",
+  "stop_type": "Drop"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Stop Type",
+  "modified": "2022-05-23 05:05:25.574970",
+  "name": "Pick/Drop",
+  "stop_type": "Pick/Drop"
+ }
+]

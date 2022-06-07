@@ -36,6 +36,20 @@ app_license = "MIT"
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
+fixtures = [
+	{
+		"doctype": "Stop Type",
+		"filters": {
+			"name": (
+				"in", (
+					"Pick/Drop",
+					"Drop",
+					"Pickup"
+				)
+			)
+		}
+	}
+]
 # Home Pages
 # ----------
 
