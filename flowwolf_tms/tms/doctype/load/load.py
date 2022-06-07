@@ -13,6 +13,7 @@ field_mapping = {
 		"type": "stopReason",
 		"date": "appointmentDate",
 		"time": "appointmentTime",
+		"location_address": "stopAddress"
 	},
 	"items": {}
 }
@@ -21,14 +22,17 @@ hc_values = {
 	"createCustomerQuote": True,
 	"createEdiTransaction": True,
 	"pickupStopCount": 2,
-	"senderId": "12345678",
+	"senderId": "penske",
 	"paymentTerms": "CC",
 	"purpose": 6,
 }
 
 stops_hc_values = {
 	"senderId": "018076351",
-	"appointmentRequired": False
+	"appointmentRequired": False,
+	"senderId": "penske",
+	"createContact": False,
+	"createLineitems": False
 }
 
 class Load(Document):
@@ -69,7 +73,7 @@ class Load(Document):
 							if field_mapping[field.fieldname].get(c_field.fieldname):
 								value = row.get(c_field.fieldname) or None
 								if c_field.fieldtype == "Time" and value:
-									value = frappe.utils.get_time_str(value)
+									value = frappe.utils.get_time_str(value)[0:-3]
 
 								temp_dict[field_mapping[field.fieldname].get(c_field.fieldname)] = value
 
@@ -78,7 +82,7 @@ class Load(Document):
 
 						xml_dict[field.fieldname].append(temp_dict)
 		xml_dict = {**hc_values, **xml_dict}
-		xml = dicttoxml(xml_dict, attr_type=False, item_func=my_item_func).decode('UTF-8')
+		xml = dicttoxml(xml_dict, custom_root="motorcarrierLoadtender", attr_type=False, item_func=my_item_func).decode('UTF-8')
 		
 		if beautify:
 			xml = parseString(xml)

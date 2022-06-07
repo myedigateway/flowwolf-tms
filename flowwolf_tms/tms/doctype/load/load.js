@@ -1,6 +1,14 @@
 // Copyright (c) 2022, Flowwolf Inc. and contributors
 // For license information, please see license.txt
 
+frappe.form.link_formatters['Stop Location'] = function(value, doc) {
+	if (doc.location_address) {
+		return doc.location_address;
+	} else {
+		return value;
+	}
+}
+
 frappe.ui.form.on('Load', {
 	refresh: function(frm) {
 		if(!frm.is_new()) {
