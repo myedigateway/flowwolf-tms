@@ -76,8 +76,7 @@ class Load(Document):
 
 								if c_field.fieldtype == "Time" and value:
 									value = frappe.utils.get_time_str(value)
-									value = value.split(":")
-									value = ":".join(value[0:2])
+									value = frappe.utils.format_time(value, "HH:mm")
 
 								if c_field.fieldtype == "Link" and c_field.fieldname == "stop" and c_field.options == "Stop Location":
 									stop_location_doc = frappe.get_doc("Stop Location", value)
