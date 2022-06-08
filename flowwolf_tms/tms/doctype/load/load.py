@@ -13,14 +13,14 @@ field_mapping = {
 		"type": "stopReason",
 		"date": "appointmentDate",
 		"time": "appointmentTime",
-		"location_address": "stopAddress"
+		"stop": "stopAddress"
 	},
 	"items": {}
 }
 
 hc_values = {
-	"createCustomerQuote": True,
-	"createEdiTransaction": True,
+	"createCustomerQuote": "true",
+	"createEdiTransaction": "true",
 	"pickupStopCount": 2,
 	"senderId": "penske",
 	"paymentTerms": "CC",
@@ -29,10 +29,10 @@ hc_values = {
 
 stops_hc_values = {
 	"senderId": "018076351",
-	"appointmentRequired": False,
+	"appointmentRequired": "false",
 	"senderId": "penske",
-	"createContact": False,
-	"createLineitems": False
+	"createContact": "false",
+	"createLineitems": "false"
 }
 
 class Load(Document):
@@ -46,6 +46,7 @@ class Load(Document):
 		# stops_list = get_stop_list()
 		xml_dict = {
 			"stopCount": len(self.stops),
+			"orderNum": self.get("load_id"),
 			"stops": []
 		}
 
@@ -72,8 +73,26 @@ class Load(Document):
 						for c_field in child_fields:
 							if field_mapping[field.fieldname].get(c_field.fieldname):
 								value = row.get(c_field.fieldname) or None
+
 								if c_field.fieldtype == "Time" and value:
 									value = frappe.utils.get_time_str(value)[0:-3]
+
+								if c_field.fieldtype == "Link" and c_field.fieldname == "stop" and c_field.options == "Stop Location":
+									stop_location_doc = frappe.get_doc("Stop Location", value)
+									print("```````````````````````````````````````````````````````````````````````````````````````````````")
+									print(stop_location_doc.as_dict())
+									value = {
+										"name": stop_location_doc.address_line_1,
+										"locationCode": stop_location_doc.location_code,
+										"street": stop_location_doc.address_line_1,
+										"city": stop_location_doc.city,
+										"state": stop_location_doc.state,
+										"stateCode": stop_location_doc.state,
+										"zip": stop_location_doc.postal_code,
+										"countryCode": stop_location_doc.country,
+										"contacts" : stop_location_doc.mobile_no
+									}
+									print("```````````````````````````````````````````````````````````````````````````````````````````````")
 
 								temp_dict[field_mapping[field.fieldname].get(c_field.fieldname)] = value
 

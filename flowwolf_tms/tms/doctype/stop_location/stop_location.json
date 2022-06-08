@@ -13,6 +13,7 @@
   "mobile_no",
   "address",
   "column_break_3",
+  "location_code",
   "state",
   "postal_code",
   "country",
@@ -29,19 +30,23 @@
   {
    "fieldname": "address_and_contact_section",
    "fieldtype": "Section Break",
-   "label": "Address and Contact"
+   "label": "Address and Contact",
+   "read_only": 1
   },
   {
+   "fetch_from": "address.address_line1",
    "fieldname": "address_line_1",
    "fieldtype": "Data",
    "label": "Address Line 1"
   },
   {
+   "fetch_from": "address.city",
    "fieldname": "city",
    "fieldtype": "Data",
    "label": "City"
   },
   {
+   "fetch_from": "address.phone",
    "fieldname": "mobile_no",
    "fieldtype": "Data",
    "label": "Mobile No"
@@ -57,16 +62,19 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "address.state",
    "fieldname": "state",
    "fieldtype": "Data",
    "label": "State"
   },
   {
+   "fetch_from": "address.pincode",
    "fieldname": "postal_code",
    "fieldtype": "Data",
    "label": "Postal Code"
   },
   {
+   "fetch_from": "address.country",
    "fieldname": "country",
    "fieldtype": "Link",
    "label": "Country",
@@ -76,11 +84,17 @@
    "fieldname": "address_html",
    "fieldtype": "HTML",
    "label": "Address HTML"
+  },
+  {
+   "fetch_from": "address.location_code",
+   "fieldname": "location_code",
+   "fieldtype": "Data",
+   "label": "Location Code"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-06-01 04:53:50.547356",
+ "modified": "2022-06-07 21:55:52.554474",
  "modified_by": "Administrator",
  "module": "TMS",
  "name": "Stop Location",
