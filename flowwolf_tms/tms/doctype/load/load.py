@@ -13,7 +13,7 @@ field_mapping = {
 		"type": "stopReason",
 		"date": "appointmentDate",
 		"time": "appointmentTime",
-		"stop": "stopAddress"
+		"stop": "address"
 	},
 	"items": {}
 }
@@ -24,7 +24,7 @@ hc_values = {
 	"pickupStopCount": 2,
 	"senderId": "PENSKE",
 	"paymentTerms": "CC",
-	"purpose": 6,
+	"purpose": "00",
 }
 
 stops_hc_values = {
@@ -76,11 +76,11 @@ class Load(Document):
 
 								if c_field.fieldtype == "Time" and value:
 									value = frappe.utils.get_time_str(value)[0:-3]
+									value = value.split(":")
+									value = ":".join(value[0:2])
 
 								if c_field.fieldtype == "Link" and c_field.fieldname == "stop" and c_field.options == "Stop Location":
 									stop_location_doc = frappe.get_doc("Stop Location", value)
-									print("```````````````````````````````````````````````````````````````````````````````````````````````")
-									print(stop_location_doc.as_dict())
 									value = {
 										"name": stop_location_doc.address_line_1,
 										"locationCode": stop_location_doc.location_code,
@@ -92,7 +92,6 @@ class Load(Document):
 										"countryCode": stop_location_doc.country,
 										"contacts" : stop_location_doc.mobile_no
 									}
-									print("```````````````````````````````````````````````````````````````````````````````````````````````")
 
 								temp_dict[field_mapping[field.fieldname].get(c_field.fieldname)] = value
 
