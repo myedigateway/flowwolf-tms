@@ -22,7 +22,7 @@ hc_values = {
 	"createCustomerQuote": "true",
 	"createEdiTransaction": "true",
 	"pickupStopCount": 2,
-	"senderId": "penske",
+	"senderId": "PENSKE",
 	"paymentTerms": "CC",
 	"purpose": 6,
 }
