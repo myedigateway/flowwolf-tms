@@ -11,6 +11,7 @@
   "location_address",
   "column_break_3",
   "type",
+  "identifier_code",
   "section_break_5",
   "date",
   "time",
@@ -81,12 +82,19 @@
    "fieldtype": "Small Text",
    "hidden": 1,
    "label": "Location Address"
+  },
+  {
+   "fetch_from": "type.identifier_code",
+   "fieldname": "identifier_code",
+   "fieldtype": "Data",
+   "label": "Identifier Code",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-06-07 02:25:05.453494",
+ "modified": "2022-06-08 03:49:26.879791",
  "modified_by": "Administrator",
  "module": "TMS",
  "name": "Load Stop",

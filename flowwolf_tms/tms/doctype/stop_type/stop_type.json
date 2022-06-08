@@ -7,7 +7,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "stop_type"
+  "stop_type",
+  "identifier_code"
  ],
  "fields": [
   {
@@ -15,11 +16,16 @@
    "fieldtype": "Data",
    "label": "Stop Type",
    "unique": 1
+  },
+  {
+   "fieldname": "identifier_code",
+   "fieldtype": "Data",
+   "label": "Identifier Code"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-05-23 05:04:34.826689",
+ "modified": "2022-06-08 03:48:13.348881",
  "modified_by": "Administrator",
  "module": "TMS",
  "name": "Stop Type",

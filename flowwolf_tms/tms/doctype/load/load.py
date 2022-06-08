@@ -81,6 +81,7 @@ class Load(Document):
 								if c_field.fieldtype == "Link" and c_field.fieldname == "stop" and c_field.options == "Stop Location":
 									stop_location_doc = frappe.get_doc("Stop Location", value)
 									value = {
+										"identifierCode": row.get("identifier_code"),
 										"name": stop_location_doc.address_line_1,
 										"locationCode": stop_location_doc.location_code,
 										"street": stop_location_doc.address_line_1,
