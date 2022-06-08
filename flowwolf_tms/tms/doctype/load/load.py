@@ -75,7 +75,7 @@ class Load(Document):
 								value = row.get(c_field.fieldname) or None
 
 								if c_field.fieldtype == "Time" and value:
-									value = frappe.utils.get_time_str(value)[0:-3]
+									value = frappe.utils.get_time_str(value)
 									value = value.split(":")
 									value = ":".join(value[0:2])
 
