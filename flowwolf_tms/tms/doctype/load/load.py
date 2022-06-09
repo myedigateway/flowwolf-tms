@@ -19,8 +19,8 @@ field_mapping = {
 }
 
 hc_values = {
-	"createCustomerQuote": "true",
-	"createEdiTransaction": "true",
+	"createCustomerQuote": "false",
+	"createEdiTransaction": "false",
 	"pickupStopCount": 2,
 	"senderId": "PENSKE",
 	"paymentTerms": "CC",
