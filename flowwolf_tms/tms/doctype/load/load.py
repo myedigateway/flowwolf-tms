@@ -25,6 +25,7 @@ hc_values = {
 	"senderId": "PENSKE",
 	"paymentTerms": "CC",
 	"purpose": "00",
+	"tmsType": "Shipper/Consignee",
 }
 
 stops_hc_values = {
