@@ -2,22 +2,25 @@
  {
   "docstatus": 0,
   "doctype": "Stop Type",
-  "modified": "2022-05-23 05:05:06.691558",
-  "name": "Pickup",
-  "stop_type": "Pickup"
+  "identifier_code": "SF",
+  "modified": "2022-06-08 03:53:25.088289",
+  "name": "pickup",
+  "stop_type": "pickup"
  },
  {
   "docstatus": 0,
   "doctype": "Stop Type",
-  "modified": "2022-05-23 05:05:16.725924",
-  "name": "Drop",
-  "stop_type": "Drop"
+  "identifier_code": "ST",
+  "modified": "2022-06-08 03:53:12.197600",
+  "name": "drop",
+  "stop_type": "drop"
  },
  {
   "docstatus": 0,
   "doctype": "Stop Type",
+  "identifier_code": null,
   "modified": "2022-05-23 05:05:25.574970",
-  "name": "Pick/Drop",
-  "stop_type": "Pick/Drop"
+  "name": "pick/drop",
+  "stop_type": "pick/drop"
  }
 ]

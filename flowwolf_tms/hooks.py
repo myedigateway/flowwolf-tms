@@ -42,9 +42,17 @@ fixtures = [
 		"filters": {
 			"name": (
 				"in", (
-					"Pick/Drop",
-					"Drop",
-					"Pickup"
+					"pickup",
+					"drop",
+					"pick/drop"
+				)
+			)
+		},
+		"doctype": "Webhook",
+		"filters": {
+			"name": (
+				"in", (
+					"Load Creation"
 				)
 			)
 		}
