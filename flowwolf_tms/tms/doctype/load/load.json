@@ -28,12 +28,6 @@
    "options": "LOAD-.MM.-.YYYY.-.DD.-"
   },
   {
-   "fieldname": "items",
-   "fieldtype": "Table",
-   "label": "Items",
-   "options": "Load Item"
-  },
-  {
    "fieldname": "stops",
    "fieldtype": "Table",
    "label": "Stops",
@@ -86,11 +80,17 @@
    "fieldname": "load_id",
    "fieldtype": "Data",
    "label": "Load ID"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Load Item"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-05-26 05:10:31.817397",
+ "modified": "2022-06-17 02:41:07.166674",
  "modified_by": "Administrator",
  "module": "TMS",
  "name": "Load",

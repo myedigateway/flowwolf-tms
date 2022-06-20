@@ -17,7 +17,11 @@
   "time",
   "column_break_8",
   "appointment_required",
-  "latest_time"
+  "latest_time",
+  "section_break_13",
+  "items_picked",
+  "column_break_15",
+  "items_dropped"
  ],
  "fields": [
   {
@@ -76,7 +80,7 @@
    "label": "Latest Time"
   },
   {
-   "fetch_from": "stop.location_address",
+   "fetch_from": "stop.address_title",
    "fieldname": "location_address",
    "fieldtype": "Small Text",
    "hidden": 1,
@@ -88,12 +92,30 @@
    "fieldtype": "Data",
    "label": "Identifier Code",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_13",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items_picked",
+   "fieldtype": "Int",
+   "label": "Items Picked"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "items_dropped",
+   "fieldtype": "Int",
+   "label": "Items Dropped"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-06-10 05:28:40.575612",
+ "modified": "2022-06-17 01:28:58.380099",
  "modified_by": "Administrator",
  "module": "TMS",
  "name": "Load Stop",

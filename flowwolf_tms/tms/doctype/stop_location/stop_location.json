@@ -8,6 +8,7 @@
  "field_order": [
   "location_address",
   "address_and_contact_section",
+  "address_title",
   "address_line_1",
   "city",
   "mobile_no",
@@ -90,11 +91,17 @@
    "fieldname": "location_code",
    "fieldtype": "Data",
    "label": "Location Code"
+  },
+  {
+   "fetch_from": "address.address_title",
+   "fieldname": "address_title",
+   "fieldtype": "Data",
+   "label": "Address Title"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-06-07 21:55:52.554474",
+ "modified": "2022-06-16 21:44:14.396270",
  "modified_by": "Administrator",
  "module": "TMS",
  "name": "Stop Location",
