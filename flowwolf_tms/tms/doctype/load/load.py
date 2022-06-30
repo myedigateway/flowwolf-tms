@@ -36,8 +36,7 @@ hc_values = {
 stops_hc_values = {
 	"senderId": "018076351",
 	"senderId": "PENSKE",
-	"createContact": "false",
-	"createLineitems": "false"
+	"createContact": "false"
 }
 
 class Load(Document):
@@ -99,7 +98,7 @@ class Load(Document):
 		for field in fields:
 			if field.fieldtype not in ["Table", "Table MultiSelect"]:
 				if field_mapping.get(field.fieldname):
-					value = self.get(field.fieldname) or none
+					value = self.get(field.fieldname) or None
 					if field.fieldtype == "Time" and value:
 						value = frappe.utils.get_time_str(value)
 					
