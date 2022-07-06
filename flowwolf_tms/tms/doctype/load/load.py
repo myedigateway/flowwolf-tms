@@ -26,7 +26,6 @@ field_mapping = {
 hc_values = {
 	"createCustomerQuote": "false",
 	"createEdiTransaction": "false",
-	"pickupStopCount": 2,
 	"senderId": "PENSKE",
 	"paymentTerms": "CC",
 	"purpose": "00",
@@ -89,6 +88,7 @@ class Load(Document):
 		xml_dict = {
 			"stopCount": len(self.stops),
 			"orderNum": self.get("load_id"),
+			"pickupStopCount": self.get_pickup_count(),
 			"stops": []
 		}
 
@@ -157,6 +157,13 @@ class Load(Document):
 			return str(xml.toprettyxml())
 
 		return str(xml)
+
+	def get_pickup_count(self):
+		pickupStopCount = 0
+		for stop in self.stops:
+			if stop.type == "pickup":
+				pickupStopCount += 1
+		return pickupStopCount
 
 	def get_line_items(self, stop):
 		line_items = []
