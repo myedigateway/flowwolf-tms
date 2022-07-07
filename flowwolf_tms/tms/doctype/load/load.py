@@ -43,6 +43,7 @@ class Load(Document):
 		self.sort_stop_stop_sequence()
 		self.update_items()
 		self.update_pickup_and_drop()
+		self.update_missing_pickup_and_drop()
 
 	def sort_stop_stop_sequence(self):
 		for i, stop in enumerate(sorted(self.stops, key=lambda stop: stop.stop_sequence), start=1):
@@ -51,7 +52,7 @@ class Load(Document):
 	def update_items(self):
 		total_pickup = sum([cint(stop.items_picked) for stop in self.get("stops")])
 		total_drop = sum([cint(stop.items_dropped) for stop in self.get("stops")])
-		total_items = min([total_pickup, total_drop])
+		total_items = max([total_pickup, total_drop])
 		self.items = []
 
 		for i in range(total_items):
@@ -61,22 +62,50 @@ class Load(Document):
 
 	def update_pickup_and_drop(self):
 		for stop in self.get("stops"):
-			for item in self.get("items"):
-				if stop.type == "pickup":
-					if item.pickup_stop_location:
-						continue
-					else:
-						item.pickup_stop_location = stop.stop
-						item.pickup = frappe.db.get_value("Stop Location", stop.stop, "address_title")
-						break
+			if stop.type == "pickup":
+				for i in range(stop.items_picked):
+					for item in self.get("items"):
+						if item.pickup_stop_location:
+							continue
+						else:
+							item.pickup_stop_location = stop.stop
+							item.pickup = frappe.db.get_value("Stop Location", stop.stop, "address_title")
+							break
 
-				elif stop.type == "drop":
-					if item.drop_stop_location:
-						continue	
-					else:
-						item.drop_stop_location = stop.stop
-						item.drop = frappe.db.get_value("Stop Location", stop.stop, "address_title")
-						break
+			elif stop.type == "drop":
+				for i in range(stop.items_dropped):
+					for item in self.get("items"):
+						if item.drop_stop_location:
+							continue	
+						else:
+							item.drop_stop_location = stop.stop
+							item.drop = frappe.db.get_value("Stop Location", stop.stop, "address_title")
+							break
+
+	def update_missing_pickup_and_drop(self):
+		last_pickup = None
+		last_drop = None
+
+		for stop in reversed(self.get("stops")):
+			if last_pickup and last_drop:
+				break
+			else:
+				if not last_pickup and stop.type == "pickup":
+					last_pickup = stop.stop
+				elif not last_drop and stop.type == "drop":
+					last_drop = stop.stop
+		
+		last_pickup_title = frappe.db.get_value("Stop Location", last_pickup, "address_title")
+		last_drop_title = frappe.db.get_value("Stop Location", last_drop, "address_title")
+
+		for item in self.get("items"):
+			if not item.pickup_stop_location:
+				item.pickup_stop_location = last_pickup
+				item.pickup = last_pickup_title
+
+			if not item.drop_stop_location:
+				item.drop_stop_location = last_drop
+				item.drop = last_drop_title
 
 	@frappe.whitelist()
 	def get_xml_(self):
