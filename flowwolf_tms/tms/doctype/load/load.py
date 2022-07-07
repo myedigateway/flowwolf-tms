@@ -63,7 +63,7 @@ class Load(Document):
 	def update_pickup_and_drop(self):
 		for stop in self.get("stops"):
 			if stop.type == "pickup":
-				for i in range(stop.items_picked):
+				for i in range(cint(stop.items_picked)):
 					for item in self.get("items"):
 						if item.pickup_stop_location:
 							continue
@@ -73,7 +73,7 @@ class Load(Document):
 							break
 
 			elif stop.type == "drop":
-				for i in range(stop.items_dropped):
+				for i in range(cint(stop.items_dropped)):
 					for item in self.get("items"):
 						if item.drop_stop_location:
 							continue	
