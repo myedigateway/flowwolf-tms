@@ -12,6 +12,7 @@ field_mapping = {
 	"load_id": "shipmentId",
 	"equipment_type": "equipmentCode",
 	"distance": "distance",
+	"shipper": "senderId",
 	"stops": {
 		"stop_sequence": "stopNum",
 		"type": "stopReason",
@@ -26,15 +27,12 @@ field_mapping = {
 hc_values = {
 	"createCustomerQuote": "false",
 	"createEdiTransaction": "false",
-	"senderId": "PENSKE",
 	"paymentTerms": "CC",
 	"purpose": "00",
 	"tmsType": "Shipper/Consignee",
 }
 
 stops_hc_values = {
-	"senderId": "018076351",
-	"senderId": "PENSKE",
 	"createContact": "false"
 }
 
@@ -150,7 +148,6 @@ class Load(Document):
 									value = frappe.utils.format_time(value, "HH:mm")
 
 								if c_field.fieldtype == "Check" and c_field.fieldname == "appointment_required":
-									print(value)
 									value = "true" if value else "false"
 
 								if c_field.fieldtype == "Link" and c_field.fieldname == "stop" and c_field.options == "Stop Location":
@@ -170,13 +167,15 @@ class Load(Document):
 										"countryCode": stop_location_doc.country,
 										"contacts" : stop_location_doc.mobile_no,
 									}
-
+								
 								temp_dict[field_mapping[field.fieldname].get(c_field.fieldname)] = value
+								temp_dict["sender_id"] = self.shipper
 
 						if globals().get(f"{field.fieldname}_hc_values"):
 							temp_dict.update(globals().get(f"{field.fieldname}_hc_values"))
 
-						xml_dict[field.fieldname].append(temp_dict)
+						if field.fieldname == "stops":
+							xml_dict[field.fieldname].append(temp_dict)
 
 		xml_dict = {**hc_values, **xml_dict}
 		xml = dicttoxml(xml_dict, custom_root="motorcarrierLoadtender", attr_type=False, item_func=my_item_func).decode('UTF-8')

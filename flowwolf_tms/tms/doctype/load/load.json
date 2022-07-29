@@ -36,6 +36,7 @@
   {
    "fieldname": "equipment_type",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Equipment Type",
    "options": "Equipment Type"
   },
@@ -48,8 +49,11 @@
   {
    "fieldname": "shipper",
    "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Shipper",
-   "options": "Customer"
+   "options": "Supplier"
   },
   {
    "fieldname": "carrier",
@@ -93,7 +97,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-27 04:07:21.908056",
+ "modified": "2022-07-29 04:36:15.111107",
  "modified_by": "Administrator",
  "module": "TMS",
  "name": "Load",
